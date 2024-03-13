@@ -1,25 +1,22 @@
 package com.students.demo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.beans.factory.annotation.Qualifier;
 
-@Component
-public class MyComponent {
+@Service
+public class MyService {
 
-    private MyInterface service;
 
+    private MyBean2 myBean2;
     //DI через поле
     @Autowired
-    @Qualifier("myService2")
-    private MyInterface service2;
+    private MyBean1 myBean1;
 
    // DI через конструктор
     @Autowired
-    public MyComponent(@Qualifier("myService1")MyInterface service) {
-        this.service = service;
-        service.doSomething();
+    public MyService(MyBean2 myBean2) {
+        this.myBean2 = myBean2;
     }
 /*
     // DI через setter
@@ -28,8 +25,8 @@ public class MyComponent {
         this.service = service;
     }*/
 
-/*
-    @PostConstruct
+
+/*    @PostConstruct
     public void postConstruct() {
         System.out.println("MyService bean is initialized");
 
@@ -38,10 +35,10 @@ public class MyComponent {
     @PreDestroy
     public void preDestroy() {
         System.out.println("MyService bean is destroyed");
-
-
     }*/
     public void doSomething() {
-        service.doSomething();
+        System.out.println("Service ding smth");
+        myBean1.doSomething();
+        myBean2.doSomething();
     }
 }
