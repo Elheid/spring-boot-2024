@@ -6,8 +6,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import lombok.extern.log4j.Log4j2;
 
 @Configuration
+@Log4j2
 public class MyConfig {
 
     @Bean
@@ -16,14 +18,11 @@ public class MyConfig {
         bean.doSomething();
         return bean;
     }
-    @PostConstruct
-    public void postConstruct() {
-        System.out.println("MyBean1 bean is initialized");
-    }
-
-    @PreDestroy
-    public void preDestroy() {
-        System.out.println("MyBean1 bean is destroyed");
+    @Bean
+    public MyBean2 bean2() {
+        MyBean2 bean = new MyBean2();
+        bean.doSomething();
+        return bean;
     }
 
 }
