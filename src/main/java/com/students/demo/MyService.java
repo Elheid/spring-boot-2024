@@ -2,50 +2,42 @@ package com.students.demo;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import jakarta.annotation.PostConstruct;
-import jakarta.annotation.PreDestroy;
-import lombok.extern.log4j.Log4j2;
+
+
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
+import lombok.experimental.NonFinal;
+import lombok.experimental.PackagePrivate;
 
 @Service
 @Log4j2
+@FieldDefaults(makeFinal=true, level=AccessLevel.PRIVATE)
 public class MyService {
 
 
     //DI через поле
    @Autowired
-    private MyBean1 myBean1;
-
-   // DI через конструктор
-
-    private MyBean2 myBean3;
-    @Autowired
-    public MyService(MyBean2 myBean3) {
-        this.myBean3 = myBean3;
-        log.info("Произошла инициализация бина по конструктору");
-    }
+   @NonFinal MyBeanFirst myBean1;
 
     // DI через setter
-    private MyBean2 myBean2;
+    @NonFinal MyInterface myBean2;
     @Autowired
-    public void setMyService2(MyBean2 myBean2) {
+    private void setMyService2(MyBeanSecond myBean2) {
         this.myBean2 = myBean2;
         log.info("Произошла инициализация бина через setter");
     }
 
+    // DI через конструктор
 
-/*    @PostConstruct
-    public void postConstruct() {
-        System.out.println("MyService bean is initialized");
-
+    private final MyInterface myBean3;
+    private MyService(MyBeanThird myBean3) {
+        this.myBean3 = myBean3;
+        log.info("Произошла инициализация бина по конструктору");
     }
 
-    @PreDestroy
-    public void preDestroy() {
-        System.out.println("MyService bean is destroyed");
-    }
-*/
+
     public void doSomething() {
-        System.out.println("Service ding smth");
+        log.info("Service ding smth");
         myBean1.doSomething();
         myBean2.doSomething();
         myBean3.doSomething();
