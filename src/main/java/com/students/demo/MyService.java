@@ -16,8 +16,8 @@ public class MyService {
 
 
     //DI через поле
-    @Autowired
-    @NonFinal MyInterface myBeanFirst;
+   @Autowired
+   @NonFinal MyInterface myBeanFirst;
 
     // DI через setter
     @NonFinal MyInterface myBeanSecond;
