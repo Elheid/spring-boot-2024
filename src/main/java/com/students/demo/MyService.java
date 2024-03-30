@@ -9,6 +9,8 @@ import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
 import lombok.experimental.PackagePrivate;
 
+import java.util.Random;
+
 @Service
 @Log4j2
 @FieldDefaults(makeFinal=true, level=AccessLevel.PRIVATE)
@@ -35,6 +37,10 @@ public class MyService {
         log.info("Произошла инициализация бина по конструктору");
     }
 
+    public int GetRandomId(){
+        Random random = new Random();
+        return random.nextInt(0,100);
+    }
 
     public void doSomething() {
         log.info("Service ding smth");
