@@ -1,6 +1,7 @@
 package com.students.demo.Controllers;
 
 
+import com.students.demo.MyBeanSecond;
 import com.students.demo.MyService;
 import com.students.demo.dto.request.DataRequest;
 import com.students.demo.dto.response.MyData;
@@ -11,12 +12,14 @@ import java.util.Random;
 
 @RestController
 public class ControllerForJSON {
+
+    private MyService service;
     @Autowired
-    MyService service;
+    private void setMyService2(MyService service) {
+        this.service = service;
+    }
     @PostMapping("/someData")
     public MyData getAndChangeJson(@RequestBody DataRequest someData) {
-        MyData newData = new MyData(someData.getPrice(), someData.getInfo());
-        newData.getInfo().setId(service.GetRandomId());
-        return newData;
+        return service.CreateResponse(someData);
     }
 }

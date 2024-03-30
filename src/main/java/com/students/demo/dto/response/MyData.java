@@ -6,12 +6,12 @@ import lombok.experimental.FieldDefaults;
 import lombok.Getter;
 import lombok.Setter;
 
-@FieldDefaults(level= AccessLevel.PRIVATE)
 @Getter
 @Setter
+@FieldDefaults(level= AccessLevel.PRIVATE)
 public class MyData {
-    private double price;
-    private Info info;
+    double price;
+    Info info;
 
     public MyData(double price, RequestInfo info){
         this.price = price;
