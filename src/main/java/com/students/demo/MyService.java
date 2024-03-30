@@ -27,7 +27,6 @@ public class MyService {
         log.info("Произошла инициализация бина через setter");
     }
 
-
     public void doSomething() {
         log.info("Service ding smth");
         myBeanFirst.doSomething();

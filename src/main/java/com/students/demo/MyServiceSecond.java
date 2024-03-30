@@ -1,10 +1,10 @@
 package com.students.demo;
 
+import com.students.demo.beans.MyBeanThird;
+import com.students.demo.config.MyProperties;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
-import lombok.experimental.NonFinal;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -12,12 +12,18 @@ import org.springframework.stereotype.Service;
 @FieldDefaults(makeFinal=true, level= AccessLevel.PRIVATE)
 public class MyServiceSecond {
 
-
     // DI через конструктор
     final MyInterface MyBinThird;
     public MyServiceSecond(MyBeanThird MyBinThird) {
         this.MyBinThird = MyBinThird;
         log.info("Произошла инициализация бина по конструктору");
+    }
+
+    public String CreateConfigResponse(MyProperties myProperties){
+        String response = "";
+        response+="List values: "+(myProperties.getListValues());
+        response+="\nEnvironment variable: "+myProperties.getEnvironmentVariable();
+        return response;
     }
 
     public void doSomething() {
