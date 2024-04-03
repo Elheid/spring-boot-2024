@@ -1,5 +1,6 @@
 package com.students.demo;
 
+import com.students.demo.config.MyProperties;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
@@ -18,6 +19,13 @@ public class MyServiceSecond {
     public MyServiceSecond(MyBeanThird MyBinThird) {
         this.MyBinThird = MyBinThird;
         log.info("Произошла инициализация бина по конструктору");
+    }
+
+    public String CreateConfigResponse(MyProperties myProperties){
+        String response = "";
+        response+="List values: "+(myProperties.getListValues());
+        response+="\nEnvironment variable: "+myProperties.getEnvironmentVariable();
+        return response;
     }
 
     public void doSomething() {

@@ -22,15 +22,6 @@ public class ConfigController {
 
     @GetMapping("/config")
     public String getConfig() {
-       // return service.CreateConfigResponse(myProperties);
-        return  CreateConfigResponse(myProperties);
+        return service.CreateConfigResponse(myProperties);
     }
-
-    public String CreateConfigResponse(MyProperties myProperties){
-        String response = "";
-        response+="List values: "+(myProperties.getListValues());
-        response+="\nEnvironment variable: "+myProperties.getEnvironmentVariable();
-        return response;
-    }
-
 }
