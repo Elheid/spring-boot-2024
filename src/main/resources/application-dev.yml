@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: MyApp
+
+myapp:
+  list-values:
+    - java
+    - js
+    - c#
+  environment-variable: default

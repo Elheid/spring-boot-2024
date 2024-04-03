@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: MyApp
+
+myapp:
+  list-values:
+    - prod1
+    - prod2
+    - prod3
+  environment-variable: prod
