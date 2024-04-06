@@ -3,9 +3,7 @@ package com.students.demo;
 import com.students.demo.config.MyProperties;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
-import lombok.experimental.NonFinal;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,11 +19,9 @@ public class MyServiceSecond {
         log.info("Произошла инициализация бина по конструктору");
     }
 
-    public String CreateConfigResponse(MyProperties myProperties){
-        String response = "";
-        response+="List values: "+(myProperties.getListValues());
-        response+="\nEnvironment variable: "+myProperties.getEnvironmentVariable();
-        return response;
+    public String createConfigResponse(MyProperties myProperties){
+        return "List values: "+(myProperties.getListValues())
+                + "\nEnvironment variable: "+myProperties.getEnvironmentVariable();
     }
 
     public void doSomething() {

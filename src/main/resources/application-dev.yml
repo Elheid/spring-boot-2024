@@ -7,4 +7,4 @@ myapp:
     - java
     - js
     - c#
-  environment-variable: default
+  environment-variable: ${ENV_VAR:default}
