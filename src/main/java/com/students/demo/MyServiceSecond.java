@@ -19,11 +19,9 @@ public class MyServiceSecond {
         log.info("Произошла инициализация бина по конструктору");
     }
 
-    public String CreateConfigResponse(MyProperties myProperties){
-        String response = "";
-        response+="List values: "+(myProperties.getListValues());
-        response+="\nEnvironment variable: "+myProperties.getEnvironmentVariable();
-        return response;
+    public String createConfigResponse(MyProperties myProperties){
+        return  "List values: "+(myProperties.getListValues())
+                + "\nEnvironment variable: "+myProperties.getEnvironmentVariable();
     }
 
     public void doSomething() {

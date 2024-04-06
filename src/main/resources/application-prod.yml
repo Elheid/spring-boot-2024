@@ -7,4 +7,4 @@ myapp:
     - prod1
     - prod2
     - prod3
-  environment-variable: prod
+  environment-variable: ${ENV_VAR:default}

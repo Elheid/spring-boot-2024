@@ -1,18 +1,15 @@
 package com.students.demo.beans;
 
 import com.students.demo.MyInterface;
-import com.students.demo.NotDefaultValueCondition;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.context.annotation.Conditional;
-import org.springframework.context.annotation.Profile;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.stereotype.Component;
 
 @Component
 @Log4j2
-@Conditional(NotDefaultValueCondition.class)
+@ConditionalOnExpression("'${app.env-var}' != 'default'")
 public class MyBeanIfNotDefault implements MyInterface {
     @Override
     public void doSomething() {
