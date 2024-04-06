@@ -3,27 +3,31 @@ package com.students.demo.validation;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
-public class MyValidator implements ConstraintValidator<MyValidationConstraint, String> {
+public class MyValidator implements ConstraintValidator<CustomValidationConstraint, String> {
     @Override
-    public void initialize(MyValidationConstraint constraintAnnotation) {
+    public void initialize(CustomValidationConstraint constraintAnnotation) {
     }
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
         boolean hasDigit = false;
         boolean hasUpperCase = false;
-        for (char symbol : value.toCharArray()) {
-            if (Character.isDigit(symbol)) {
-                hasDigit = true;
-            } else if (Character.isUpperCase(symbol)) {
-                hasUpperCase = true;
-            }
+        String validationError = "Value must have at least one number and one capital letter";
+
+        Pattern pattern = Pattern.compile("(?=.*\\d)(?=.*[A-Z])");
+        Matcher matcher = pattern.matcher(value);
+
+        if (matcher.find()) {
+            hasDigit = true;
+            hasUpperCase = true;
         }
-        if (!(hasDigit && hasUpperCase)) {
+        if (!hasDigit || !hasUpperCase){
             context.disableDefaultConstraintViolation();
-            context.buildConstraintViolationWithTemplate("Value must have at least one number and one capital letter")
+            context.buildConstraintViolationWithTemplate(validationError)
                     .addConstraintViolation();
             return  false;
         }

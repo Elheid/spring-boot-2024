@@ -14,8 +14,7 @@ public class ControllerTest {
     }
 
     @PostMapping("/validate")
-    public ResponseEntity<String> validateData(@RequestBody @Valid Data data) {
-        return ResponseEntity.status(HttpStatus.OK)
-                .body("Data is valid: " + data.getData());
+    public Data validateData(@RequestBody @Valid Data data) {
+        return data;
     }
 }

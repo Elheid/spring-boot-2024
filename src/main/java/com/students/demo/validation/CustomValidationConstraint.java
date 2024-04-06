@@ -1,11 +1,7 @@
 package com.students.demo.validation;
 
-
-
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -14,11 +10,9 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-@NotNull(message = "Value must not be null")
-@Size(min = 3, message = "Value must have a length of at least 3 characters")
-@Constraint(validatedBy = SpringValid.class)
-public @interface MyValidationConstraint {
-    String message() default "Invalid value";
+@Constraint(validatedBy = MyValidator.class)
+public @interface  CustomValidationConstraint {
+    String message() default "Invalid error";
 
     Class<?>[] groups() default {};
 

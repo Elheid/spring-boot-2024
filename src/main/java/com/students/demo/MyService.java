@@ -1,4 +1,5 @@
 package com.students.demo;
+import com.students.demo.dto.MyData;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,8 @@ import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
 import lombok.experimental.PackagePrivate;
+
+import java.security.SecureRandom;
 
 @Service
 @Log4j2
@@ -27,6 +30,18 @@ public class MyService {
         log.info("Произошла инициализация бина через setter");
     }
 
+
+
+    public int GetRandomId(){
+        SecureRandom random = new SecureRandom();
+        return random.nextInt(0,100);
+    }
+
+    public MyData CreateResponse(MyData someData){
+        MyData newData = new MyData(someData.getPrice(), someData.getInfo());
+        newData.getInfo().setId(GetRandomId());
+        return newData;
+    }
 
     public void doSomething() {
         log.info("Service ding smth");

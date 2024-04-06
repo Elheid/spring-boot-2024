@@ -1,5 +1,6 @@
 package com.students.demo.Controllers;
 
+import com.students.demo.dto.CustomErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
@@ -12,9 +13,9 @@ public class CustomExceptionHandler {
 
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> handleException(Exception e) {
-        return ResponseEntity.status(HttpStatus.BAD_GATEWAY)
-                .body("Custom Error: " + e.getMessage());
+    public ResponseEntity<CustomErrorResponse> handleException(Exception e) {
+        var error = new CustomErrorResponse("Custom Error: " + e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(error);
     }
 
 
