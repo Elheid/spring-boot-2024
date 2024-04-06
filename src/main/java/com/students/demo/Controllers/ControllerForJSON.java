@@ -1,23 +1,25 @@
 package com.students.demo.Controllers;
 
 
-import com.students.demo.dto.MyData;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import com.students.demo.MyBeanSecond;
+import com.students.demo.MyService;
+import com.students.demo.dto.request.DataRequest;
+import com.students.demo.dto.response.MyData;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Random;
 
 @RestController
 public class ControllerForJSON {
-    @PostMapping("/someData")
-    public MyData getAndChangeJson(@RequestBody MyData someData) {
-        Random random = new Random();
-        MyData newData = new MyData(someData.getPrice(), someData.getInfo());
-        newData.getInfo().setId(random.nextInt(0,100));
-        return newData;
-    }
 
+    private MyService service;
+    @Autowired
+    private void setMyService2(MyService service) {
+        this.service = service;
+    }
+    @PostMapping("/someData")
+    public MyData getAndChangeJson(@RequestBody DataRequest someData) {
+        return service.CreateResponse(someData);
+    }
 }
