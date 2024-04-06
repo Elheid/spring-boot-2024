@@ -1,0 +1,17 @@
+
+### Testing
+GET http://localhost:8080/test
+
+### Get all headers
+GET http://localhost:8080/headers
+
+### Send json
+POST http://localhost:8080/someData
+Content-Type: application/json
+
+{
+  "price": 125.0,
+  "info": {
+    "date": "2022-01-01"
+  }
+}
