@@ -14,18 +14,12 @@ public class MyValidator implements ConstraintValidator<CustomValidationConstrai
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        boolean hasDigit = false;
-        boolean hasUpperCase = false;
         String validationError = "Value must have at least one number and one capital letter";
 
         Pattern pattern = Pattern.compile("(?=.*\\d)(?=.*[A-Z])");
         Matcher matcher = pattern.matcher(value);
 
-        if (matcher.find()) {
-            hasDigit = true;
-            hasUpperCase = true;
-        }
-        if (!hasDigit || !hasUpperCase){
+        if (!matcher.find()){
             context.disableDefaultConstraintViolation();
             context.buildConstraintViolationWithTemplate(validationError)
                     .addConstraintViolation();

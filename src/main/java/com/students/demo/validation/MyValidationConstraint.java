@@ -16,7 +16,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @NotNull(message = "Value must not be null")
 @Size(min = 3, message = "Value must have a length of at least 3 characters")
-@Constraint(validatedBy = SpringValid.class)
+@Constraint(validatedBy = {})
 public @interface MyValidationConstraint {
     String message() default "Invalid value";
 
