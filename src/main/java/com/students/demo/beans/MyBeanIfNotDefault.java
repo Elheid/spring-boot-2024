@@ -2,7 +2,7 @@ package com.students.demo.beans;
 
 
 import com.students.demo.MyInterface;
-import com.students.demo.NotDefaultValueCondition;
+
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import lombok.extern.log4j.Log4j2;
