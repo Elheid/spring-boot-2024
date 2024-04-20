@@ -23,3 +23,6 @@ Content-Type: application/json
 {
   "data": "A1d"
 }
+
+### Test events
+GET http://localhost:8080/publish
