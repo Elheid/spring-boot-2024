@@ -23,3 +23,15 @@ Content-Type: application/json
 {
   "data": "A1d"
 }
+
+
+### Testing public api
+GET http://localhost:8080/public/api
+
+### Testing admin api admin:password -> Basic YWRtaW46cGFzc3dvcmQ=
+GET http://localhost:8080/admin/api
+Authorization: Basic YWRtaW46cGFzc3dvcmQ=
+
+### Testing support api support:password -> Basic c3VwcG9ydDpwYXNzd29yZA==
+GET http://localhost:8080/support/api
+Authorization: Basic c3VwcG9ydDpwYXNzd29yZA==
