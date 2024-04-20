@@ -25,4 +25,4 @@ Content-Type: application/json
 }
 
 ### Test events
-GET http://localhost:8080/publish
+GET http://localhost:8080/events

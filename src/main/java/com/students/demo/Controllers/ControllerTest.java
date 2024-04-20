@@ -27,7 +27,7 @@ public class ControllerTest {
         this.eventPublisherService = eventPublisherService;
     }
 
-    @GetMapping("/publish")
+    @GetMapping("/events")
     public String publishEvents() {
         eventPublisherService.publishEvents();
         return "Events published";
