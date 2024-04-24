@@ -23,3 +23,16 @@ Content-Type: application/json
 {
   "data": "A1d"
 }
+
+
+### Test DB
+POST http://localhost:8080/api/BD
+Content-Type: application/json
+
+{
+  "name": "Мой список дел",
+  "events": ["дело1", "дело2", "дело3"]
+}
+
+### Test DB
+GET http://localhost:8080/api/BD
