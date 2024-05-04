@@ -23,3 +23,28 @@ Content-Type: application/json
 {
   "data": "A1d"
 }
+
+
+### Buy product1
+POST http://localhost:8080/purchases/buy/1
+Content-Type: application/json
+
+{
+  "productId": "1"
+}
+
+### Buy product2
+POST http://localhost:8080/purchases/buy/2
+Content-Type: application/json
+
+{
+  "productId": "2"
+}
+
+### Get metric
+GET http://localhost:8080/calculate-metric
+
+### Get actuator
+GET http://localhost:8080/invoke-actuator
+
+
