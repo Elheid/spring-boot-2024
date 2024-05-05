@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: MyApp
+
+myapp:
+  list-values:
+    - test1
+    - test2
+    - test3
+  environment-variable: ${ENV_VAR:test}

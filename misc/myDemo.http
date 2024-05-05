@@ -1,4 +1,7 @@
 
+### Test config/profiles
+GET http://localhost:8080/config
+
 ### Testing
 GET http://localhost:8080/test
 
@@ -23,3 +26,4 @@ Content-Type: application/json
 {
   "data": "A1d"
 }
+
