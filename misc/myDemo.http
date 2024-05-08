@@ -26,4 +26,12 @@ Content-Type: application/json
 {
   "data": "A1d"
 }
+### Test send messages
+POST http://localhost:8080/api/messages/send
+Content-Type: application/json
 
+{
+"count": 3,
+"text": "example text",
+"delay": 1000
+}
