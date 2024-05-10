@@ -17,8 +17,8 @@ public class MessageController {
 
     @PostMapping("/send")
     public String sendMessage(@RequestBody HomeworkMessage message) {
-        System.out.println(message);
-        messageSender.sendMessage();
+        //System.out.println(message);
+        messageSender.sendMessage(message);
         return "Message sent successfully!";
     }
 }

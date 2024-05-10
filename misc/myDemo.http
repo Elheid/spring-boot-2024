@@ -31,7 +31,7 @@ POST http://localhost:8080/api/messages/send
 Content-Type: application/json
 
 {
-"count": 3,
-"text": "example text",
-"delay": 1000
+"count": 4,
+"text": "4 messages",
+"delay": 3000
 }
