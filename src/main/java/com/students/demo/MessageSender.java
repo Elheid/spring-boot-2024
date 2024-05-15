@@ -12,10 +12,14 @@ public class MessageSender {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    public void sendMessage(HomeworkMessage message) {
-        //HomeworkMessage message = new HomeworkMessage(3, "example text", 1L);
-        //var strMessage = message.count() + message.text() + message.delay();
+    public void sendMessage(HomeworkMessage message) throws InterruptedException {
+
         rabbitTemplate.convertAndSend("homework", "homework.in", message);
+        try {
+            Thread.sleep(message.delay());
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println("Sent message: " + message);
     }
 }

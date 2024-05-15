@@ -16,8 +16,7 @@ public class MessageController {
     private MessageSender messageSender;
 
     @PostMapping("/send")
-    public String sendMessage(@RequestBody HomeworkMessage message) {
-        //System.out.println(message);
+    public String sendMessage(@RequestBody HomeworkMessage message) throws InterruptedException {
         messageSender.sendMessage(message);
         return "Message sent successfully!";
     }
