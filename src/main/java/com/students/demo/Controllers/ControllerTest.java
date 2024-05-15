@@ -31,9 +31,6 @@ public class ControllerTest {
     @GetMapping("/aspect")
     public String callApiMethod() {
         var value = service.doSomething();
-        if (value == false){
-            return "API method exceeded max count";
-        }
         return "API method called";
     }
 
