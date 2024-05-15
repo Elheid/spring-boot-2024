@@ -10,4 +10,5 @@ import lombok.Setter;
 public class Product{
     private String name;
     private int amount;
+    private  int id;
 }

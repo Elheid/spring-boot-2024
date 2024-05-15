@@ -8,35 +8,33 @@ import java.util.*;
 @Service
 public class ProductService {
 
-    private final List<Product> products;
+    private Map<Integer, Product> products;
 
     public ProductService() {
-        products = new ArrayList<>();
+        products = new HashMap<>();
     }
 
-    public void putPurchasesProducts(Product product){
-        products.add(product);
+    public void putPurchasesProduct(Product product){
+        products.put(product.getId(), product);
     }
 
-    public void increaseProductCount(String productName){
-        products.stream()
-                .filter(product -> product.getName().equals(productName))
-                .findFirst()
-                .ifPresent(product -> product.setAmount(product.getAmount() + 1));
+    public boolean containsProduct(Integer productId) {
+        return products.containsKey(productId);
+    }
+
+    public Optional<Product> getProductQuantity(Integer productId) {
+        return Optional.ofNullable(products.get(productId));
+    }
+
+    public void increaseProductCount(Integer productId) {
+        products.computeIfPresent(productId, (key, product) -> {
+            product.setAmount(product.getAmount() + 1);
+            return product;
+        });
     }
 
     public List<Product> getAllProducts() {
-        return new ArrayList<>(products);
-    }
-    public boolean containsProduct(String productName) {
-        return products.stream()
-                .anyMatch(product -> product.getName().equals(productName));
+        return new ArrayList<>(products.values());
     }
 
-    public Optional<Product> getProductQuantity(String productName) {
-        // Получаем количество продуктов по идентификатору
-        return products.stream()
-                .filter(product -> product.getName().equals(productName))
-                .findFirst();
-    }
 }
