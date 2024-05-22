@@ -1,16 +1,14 @@
 package com.students.demo;
 
+import com.students.demo.dto.ToDoEventDTO;
 import com.students.demo.dto.ToDoListDTO;
 import com.students.demo.dto.response.ToDoListRequest;
 import com.students.demo.dto.response.TodoListResponse;
 import com.students.demo.repository.ToDoEvent;
-import com.students.demo.repository.ToDoEventRepository;
 import com.students.demo.repository.ToDoList;
 import com.students.demo.repository.ToDoListRepository;
-import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -52,7 +50,7 @@ public class ToDoListService {
         createToDoList(toDoListDTO);
         List<ToDoListRequest> request = new ArrayList<>();
         List<String> listEventNames = toDoListDTO.events().stream()
-                .map(event -> event.name())
+                .map(ToDoEventDTO::name)
                 .collect(Collectors.toList());
         request.add(new ToDoListRequest(toDoListDTO.name(), listEventNames));
         return request;

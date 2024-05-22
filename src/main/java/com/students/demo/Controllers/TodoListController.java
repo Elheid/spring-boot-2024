@@ -4,8 +4,6 @@ import com.students.demo.ToDoListService;
 import com.students.demo.dto.ToDoListDTO;
 import com.students.demo.dto.response.ToDoListRequest;
 import com.students.demo.dto.response.TodoListResponse;
-import com.students.demo.repository.ToDoEventRepository;
-import com.students.demo.repository.ToDoListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
