@@ -6,6 +6,7 @@ import com.students.demo.EventListeners.events.CommonEvent;
 import com.students.demo.EventListeners.events.TransactionalEvent;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import jakarta.transaction.Transactional;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -17,7 +18,6 @@ public class MyEventService {
 
     private final ApplicationEventPublisher eventPublisher;
 
-    @Autowired
     public MyEventService(ApplicationEventPublisher eventPublisher) {
         this.eventPublisher = eventPublisher;
     }
@@ -32,12 +32,13 @@ public class MyEventService {
         log.info("EventService bean is destroyed");
     }
 
-
+    @Transactional
+    public void publishTransaction() {
+        eventPublisher.publishEvent(new TransactionalEvent("Hello from Transactional Event"));
+    }
     public void publishEvents() {
         eventPublisher.publishEvent(new CommonEvent("Hello from Simple Event"));
 
         eventPublisher.publishEvent(new AsyncEvent("Hello from Async Event"));
-
-        eventPublisher.publishEvent(new TransactionalEvent("Hello from Transactional Event"));
     }
 }
