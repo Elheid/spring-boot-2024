@@ -1,33 +1,30 @@
 package com.students.demo.Controllers;
 
+import com.students.demo.ToDoListService;
+import com.students.demo.dto.ToDoListDTO;
+import com.students.demo.dto.response.ToDoListRequest;
 import com.students.demo.dto.response.TodoListResponse;
-import com.students.demo.repository.ToDoList;
+import com.students.demo.repository.ToDoEventRepository;
 import com.students.demo.repository.ToDoListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/BD")
 public class TodoListController {
-    @Autowired
-    private ToDoListRepository todoListRepository;
 
+    @Autowired
+    private ToDoListService toDoListService;
 
     @PostMapping
-    public ToDoList createTodoList(@RequestBody ToDoList todoList) {
-        return todoListRepository.save(todoList);
+    public List<ToDoListRequest> createToDoList(@RequestBody ToDoListDTO toDoListDTO) {
+        return toDoListService.createToDoRequest(toDoListDTO);
     }
 
     @GetMapping
     public List<TodoListResponse> getAllTodoLists() {
-        List<TodoListResponse> response = new ArrayList<>();
-        List<ToDoList> todoLists = todoListRepository.findAll();
-        for (ToDoList todoList : todoLists) {
-            response.add(new TodoListResponse(todoList.getName(), List.of(todoList.getEvents())));
-        }
-        return response;
+        return toDoListService.createToDoResponse();
     }
 }

@@ -31,7 +31,11 @@ Content-Type: application/json
 
 {
   "name": "Мой список дел",
-  "events": ["дело1", "дело2", "дело3"]
+  "events": [
+    {"name": "дело1"},
+    {"name": "дело2"},
+    {"name": "дело3"}
+  ]
 }
 
 ### Test DB
